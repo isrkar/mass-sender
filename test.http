@@ -1,0 +1,32 @@
+### uplaod file
+POST http://localhost:8000/upload.php
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="test.csv"
+Content-Type: text/plain
+
+< ./test.csv
+--WebAppBoundary--
+
+
+### start sending list without id
+POST http://localhost:8000/send.php
+Content-Type: application/json
+
+{
+    "listId": null,
+    "title": "Title",
+    "text": "Lorem ipsum dolor sit amet"
+}
+
+
+### continue sending list with list id
+POST http://localhost:8000/send.php
+Content-Type: application/json
+
+{
+    "listId": "63fd067a6cc5d-63fd067a6cc5e",
+    "title": "Title",
+    "text": "Lorem ipsum dolor sit amet"
+}
